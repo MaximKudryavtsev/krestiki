@@ -1,0 +1,20 @@
+<div class="info">
+  <h1>enter your data</h1>
+    <form name="form">
+        <div class="info-row">
+            <label for="firstPlayer">First player</label>
+            <input type="text" id="firstPlayer" ng-model="information.first" name="first" />
+        </div>
+        <div class="info-row">
+            <label for="secondPlayer">Second player</label>
+            <input type="text" id="secondPlayer" ng-model="information.second" />
+
+        </div>
+        <div class="info-row">
+            <label for="sideLength">Side length can be from 3 to 9</label>
+            <input type="text" id="sideLength" ng-model="information.length" pattern="[3-9]" />
+        </div>
+        <input type="submit" class="create-game" ng-click="gameCtrl.checkInputData(information.first, information.second, information.length)" value="Start"/>
+
+    </form>
+</div>
