@@ -1,4 +1,4 @@
-var app = angular.module('app', []);
+var app = angular.module('app', ['ngSanitize']);
 app.controller('gameController', function(){
     this.information = {};
     this.gameInfo = function(first, second, length){
@@ -9,36 +9,48 @@ app.controller('gameController', function(){
             station: 'play'
         };
     };
+    this.setMap = function(length){
+        this.map = {};
+        for (var i = 0; i < length; i++){
+            this.map[i] = {};
+            for (var j = 0; j < length; j++){
+                this.map[i][j] = i*j;
+            }
+        }
+    };
+
     this.checkInputData = function(first, second, length){
         if ((first == null) || (second == null) || (length == null)) {
-            alert('not all fields are filled or out interval of "side length"')
+            //alert('not all fields are filled or out of interval of "side length"')
+            this.wrongData = 'not all fields are filled or out of interval of "side length"';
         }
         else {
             this.gameInfo(first, second, length);
-            this.initCanvas();
+            this.setMap(this.information.sideLength);
         }
-
     };
+
     this.statementTemplate = function () {
         if (this.information.station == 'play'){
-            return 'tmpl/play.html'
+            return 'tmpl/play.html';
         }
         else {
             return 'tmpl/create.html'
         }
     };
+
     this.back = function(){
-        this.statementTemplate = function () {
-            return 'tmpl/create.html'
-        };
+        this.cellWidth = Math.round($('#map').width() / this.information.sideLength);
+        this.cellHeight = Math.round($('#map').height() / this.information.sideLength);
+        $('.cell').css({
+            'width': this.cellWidth + 'px',
+            'height': this.cellHeight + 'px'
+        });
+
     };
-    this.initCanvas = function() {
-        var example = document.getElementById("game"),
-            ctx     = example.getContext('2d');
-        example.width  = WIDTH;
-        example.height = HEIGHT;
-        ctx.font = "100px Arial";
-        ctx.fillText("hi world", 100, 100);
-    }
+
 });
+
+
+
 

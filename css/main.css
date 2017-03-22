@@ -72,15 +72,16 @@ a
     background: #ccc;
 }
 
-.map .canvas
-{
-    width: 750px;
-    height: 580px;
-    border: 1px solid black;
-    margin: 10px auto;
-    display: block;
-    background: #fff;
+.map .row {
 
+    box-sizing: border-box;
+    margin-top: -4px;
+}
+
+.map .cell
+{
+    display: inline-block;
+    outline: 1px solid black;
 }
 
 .bold

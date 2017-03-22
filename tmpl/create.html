@@ -15,6 +15,6 @@
             <input type="text" id="sideLength" ng-model="information.length" pattern="[3-9]" />
         </div>
         <input type="submit" class="create-game" ng-click="gameCtrl.checkInputData(information.first, information.second, information.length)" value="Start"/>
-
+        <p style="color: red" ng-bind-html="gameCtrl.wrongData"></p>
     </form>
 </div>

@@ -1,4 +1,4 @@
-<div class="info-bar">
+<div class="info-bar" id="bar">
     <div class="info-bar-row">
         <div class="float-l">First player:</div>
         <div class="float-r bold">{{gameCtrl.information.firstPlayer}}</div>
@@ -16,8 +16,10 @@
     </div>
     <div ng-click="gameCtrl.back()">back <-</div>
 </div>
-<div class="map float-r">
-    <canvas id="game" class="canvas"></canvas>
+<div class="map float-r" id="map">
+    <div ng-repeat="map in gameCtrl.map" class="row">
+        <div ng-repeat="map in gameCtrl.map" class="cell">{{gameCtrl.cellLength}}</div>
+    </div>
 </div>
 
 
