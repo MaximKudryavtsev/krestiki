@@ -14,11 +14,15 @@
         <div class="float-r bold">{{gameCtrl.information.sideLength}}</div>
         <div class="clear"></div>
     </div>
-    <div ng-click="gameCtrl.back()">back <-</div>
+    <div ng-click="gameCtrl.start()" class="start">start</div>
+    <div>
+        <span>hodit:</span>
+        <span class="turn"></span>
+    </div>
 </div>
 <div class="map float-r" id="map">
-    <div ng-repeat="map in gameCtrl.map" class="row">
-        <div ng-repeat="map in gameCtrl.map" class="cell">{{gameCtrl.cellLength}}</div>
+    <div ng-repeat="map in gameCtrl.map" class="row float-l" ng-init="parentIndex = $index">
+        <div ng-repeat="map in gameCtrl.map" class="cell float-l" ng-click="gameCtrl.step($index + 1, parentIndex + 1)" id="x{{$index + 1}}y{{parentIndex + 1}}"></div>
     </div>
 </div>
 

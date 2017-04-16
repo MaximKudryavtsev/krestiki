@@ -75,13 +75,19 @@ a
 .map .row {
 
     box-sizing: border-box;
-    margin-top: -4px;
 }
 
 .map .cell
 {
-    display: inline-block;
-    outline: 1px solid black;
+    box-sizing: border-box;
+    border: 1px solid black;
+}
+
+.start
+{
+    font-weight: bold;
+    font-size: 50px;
+    cursor: pointer;
 }
 
 .bold
